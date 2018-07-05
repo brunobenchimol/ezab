@@ -359,7 +359,7 @@ class eZAB
 
         echo "<pre>";
         $this->echoMsg(
-            "<p>Server Software:        {$srv}\n" .
+            "Server Software:        {$srv}\n" .
             "Server Hostname:        {$url['host']}\n" .
             "Server Port:            {$url['port']}\n" .
             "\n" .
