@@ -357,34 +357,35 @@ class eZAB
             " 100% " . sprintf( '%6u', $data['t_max'] * 1000 ) . " (longest request)";
         }
 
+        echo "<pre>";
         $this->echoMsg(
-            "<p>Server Software:        {$srv}\n<br>" .
-            "Server Hostname:        {$url['host']}\n<br>" .
-            "Server Port:            {$url['port']}\n<br>" .
-            "\n<br>" .
-            "Document Path:          {$url['path']}\n<br>" .
-            "Document Length:        " . reset( $sizes ) . " bytes\n<br>" .
-            "\n<br>" .
-            "Concurrency Level:      {$opts['children']}\n<br>" .
-            "Time taken for tests:   " . sprintf( '%.3f', $data['tot_time'] ) . " seconds\n<br>" .
-            "Complete requests:      {$data['tries']}\n<br>" . // same as AB: includes failures
-            "Failed requests:        {$data['failures']}\n<br>" .
-            "Write errors:           {$data['write_errors']}\n<br>" .
-            ( $data['non_2xx'] ?   "Non-2xx responses:      {$data['non_2xx']}\n<br>" : '' ) .
-            ( $opts['keepalive'] ? "Keep-Alive requests:    [NA]\n<br>" : '' ) .
-            "Total transferred:      {$data['tot_bytes']} bytes\n<br>" .
-            "HTML transferred:       {$data['html_bytes']} bytes\<br>n" . // NB: includes failures
-            "Requests per second:    " . sprintf( '%.2f', $data['rps'] ) . " [#/sec] (mean)\n<br>" . // NB: includes failures
-            "Time per request:       " . sprintf( '%.3f', $data['t_avg'] * 1000 ) . " [ms] (mean)\n<br>" . // NB: excludes failures
+            "<p>Server Software:        {$srv}\n" .
+            "Server Hostname:        {$url['host']}\n" .
+            "Server Port:            {$url['port']}\n" .
+            "\n" .
+            "Document Path:          {$url['path']}\n" .
+            "Document Length:        " . reset( $sizes ) . " bytes\n" .
+            "\n" .
+            "Concurrency Level:      {$opts['children']}\n" .
+            "Time taken for tests:   " . sprintf( '%.3f', $data['tot_time'] ) . " seconds\n" .
+            "Complete requests:      {$data['tries']}\n" . // same as AB: includes failures
+            "Failed requests:        {$data['failures']}\n" .
+            "Write errors:           {$data['write_errors']}\n" .
+            ( $data['non_2xx'] ?   "Non-2xx responses:      {$data['non_2xx']}\n" : '' ) .
+            ( $opts['keepalive'] ? "Keep-Alive requests:    [NA]\n" : '' ) .
+            "Total transferred:      {$data['tot_bytes']} bytes\n" .
+            "HTML transferred:       {$data['html_bytes']} bytes\n" . // NB: includes failures
+            "Requests per second:    " . sprintf( '%.2f', $data['rps'] ) . " [#/sec] (mean)\n" . // NB: includes failures
+            "Time per request:       " . sprintf( '%.3f', $data['t_avg'] * 1000 ) . " [ms] (mean)\n" . // NB: excludes failures
             "Time per request:       [NA] [ms] (mean, across all concurrent requests)\n<br>" .
-            "Transfer rate:          " . sprintf( '%.2f', $data['tot_bytes'] / ( 1024 * $data['tot_time'] ) ) . " [Kbytes/sec] received\n<br>" .
-            "\nConnection Times (ms)\n<br>" .
-            "              min  mean[+/-sd] median   max\n<br>" .
+            "Transfer rate:          " . sprintf( '%.2f', $data['tot_bytes'] / ( 1024 * $data['tot_time'] ) ) . " [Kbytes/sec] received\n" .
+            "\nConnection Times (ms)\n" .
+            "              min  mean[+/-sd] median   max\n" .
             //"Connect:     [NA]  [NA]   [NA]   [NA]  [NA]\n" .
             //"Processing:  [NA]  [NA]   [NA]   [NA]  [NA]\n" .
             //"Waiting:     [NA]  [NA]   [NA]   [NA]  [NA]\n" .
             /// @todo better formatting if numbers go over 5 digits (roughly 2 minutes)
-            "Total:      " . sprintf( '%5u', $data['t_min'] * 1000 ) . " " . sprintf( '%5u', $data['t_avg'] * 1000 ) . "  " . sprintf( '%5.1f', $data['t_stdddev'] ). "  ". sprintf( '%5u', $data['t_median'] ) . " " . sprintf( '%5u', $data['t_max'] * 1000 ) . "\n</p>" .
+            "Total:      " . sprintf( '%5u', $data['t_min'] * 1000 ) . " " . sprintf( '%5u', $data['t_avg'] * 1000 ) . "  " . sprintf( '%5.1f', $data['t_stdddev'] ). "  ". sprintf( '%5u', $data['t_median'] ) . " " . sprintf( '%5u', $data['t_max'] * 1000 ) . "\n" .
             $pcs
         );
 
@@ -392,6 +393,8 @@ class eZAB
             'summary_data' => $data,
             'children_details' => $childrensults
         );
+        
+        echo "</pre>";
     }
 
     /**
